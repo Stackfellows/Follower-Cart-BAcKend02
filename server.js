@@ -132,6 +132,7 @@ app.use("/followerApi", authRoutes);
 app.use("/followerApi", forgotPasswordRoutes);
 
 // ✅ Google Auth Routes
+// ✅ Google Auth Routes
 app.get(
   "/followerApi/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
@@ -154,6 +155,11 @@ app.get(
     );
   }
 );
+
+// ✅ Default root route to avoid "Cannot GET /"
+app.get("/", (req, res) => {
+  res.send("🚀 API is running! Welcome to FollowersCart backend.");
+});
 
 // ===================================
 // Start the Server
